@@ -1,6 +1,6 @@
 # On the overall ROC of multistage systems
 
-MATLAB code for our proposed ROC
+A MATLAB demo for the proposed ROC of multistage classifiers
 
 Contact: letrungthanhtbt@gmail.com
 
