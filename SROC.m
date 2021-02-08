@@ -11,8 +11,10 @@ b = 0.24;
 SEN_pro = [];
 SEN_pro_AUC = [];
 
-x = linspace(0,1,121);
-for ii = 1:length(SEN)
+
+N = length(SEN);
+x = linspace(0,1,N);
+for ii = 1 : N
 
     r = 1/2 + 1/2*erf( (1+b)/(1-b)*erfinv(1-2*SPE(ii)) + a*sqrt(pi)/(4-4*b) );
     SEN_pro = [SEN_pro; r];
@@ -27,7 +29,7 @@ a = 3.9;
 b = 0.1;
 SEN_log_AUC = [];
 delta = 0.0001;
-for ii = 1: length(SEN)
+for ii = 1 : N
 
     TS      = exp(a/(1-b)) * ( (1-SPE(ii))/SPE(ii) )^( (1+b)/(1-b) );
     MS      = 1 + exp(a/(1-b)) * ( (1-SPE(ii))/SPE(ii) )^( (1+b)/(1-b) );
@@ -41,20 +43,20 @@ end
 
 %% ERROR
 error_log = abs(SEN -SEN_log );
-error_log = sum(error_log)/121
+error_log = sum(error_log)/N
 
 error_pro = abs(SEN -SEN_pro );
-error_pro = sum(error_pro)/121
+error_pro = sum(error_pro)/N
 
 %% AUC
 S_log = 0;
-for ii = 1:120
+for ii = 1 : N-1
     S_log = S_log + 1/2*(SEN_log_AUC(ii) + SEN_log_AUC(ii+1))*(x(ii+1)-x(ii));
 end
 S_log
 
 S_pro = 0;
-for ii = 1:120
+for ii = 1 : N-1
     S_pro = S_pro + 1/2*(SEN_pro_AUC(ii) + SEN_pro_AUC(ii+1))*(x(ii+1)-x(ii));
 end
 S_pro
