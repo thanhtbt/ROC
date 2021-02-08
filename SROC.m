@@ -1,5 +1,6 @@
 clc;clear;close all;
 
+%% Load cost/benefit points (Sensitivity and Specificity)
 load SEN
 load SPE
 
