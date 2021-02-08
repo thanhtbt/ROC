@@ -2,7 +2,7 @@
 
 A MATLAB demo for the proposed ROC of multistage classifiers
 
-Run the file SROC.m
+To start: run the file SROC.m
 
 Contact: letrungthanhtbt@gmail.com
 
